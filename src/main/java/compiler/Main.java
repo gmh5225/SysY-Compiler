@@ -19,7 +19,7 @@ public class Main {
     public static final BytePointer error = new BytePointer();
 
     public static void main(String[] args) throws IOException {
-        if (args.length < 2) {
+        if (args.length <= 1 ) {
             System.out.println("Missing arguments!");
         }
         String source = args[0];
@@ -29,7 +29,7 @@ public class Main {
         SysYParser parser = new SysYParser(tokens);
         ParseTree tree = parser.program();
         ParseTreeWalker walker = new ParseTreeWalker();
-        MyListener listener = new MyListener();
+        IRListener listener = new IRListener();
         walker.walk(listener, tree);
         if (LLVMPrintModuleToFile(listener.getModule(), args[1], error) != 0) {
             LLVMDisposeMessage(error);

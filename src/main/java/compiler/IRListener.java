@@ -21,7 +21,7 @@ import java.util.Map;
 
 import static org.bytedeco.llvm.global.LLVM.*;
 
-public class MyListener extends SysYParserBaseListener {
+public class IRListener extends SysYParserBaseListener {
     LLVMModuleRef module;
     LLVMBuilderRef builder;
     LLVMTypeRef i32Type;
@@ -44,7 +44,7 @@ public class MyListener extends SysYParserBaseListener {
         return name;
     }
 
-    public MyListener() {
+    public IRListener() {
         super();
         // 初始化LLVM
         LLVMInitializeCore(LLVMGetGlobalPassRegistry());
